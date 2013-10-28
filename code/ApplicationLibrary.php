@@ -7,7 +7,7 @@ class ApplicationLibrary extends DataObject{
 		'Version' => 'VarChar(50)',
 		'URL' => 'VarChar(500)',
     'LoadOrder' => 'Int',
-    'SortOrder' => 'Int'
+    'Sort' => 'Int'
 	);
 
   public static $default_sort='SortOrder';

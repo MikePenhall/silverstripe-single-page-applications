@@ -15,11 +15,11 @@ class ApplicationPage extends Page {
     'ApplicationLibraries' => 'ApplicationLibrary'
   );
 
-  static $many_many_extraFields=array(
-      'ApplicationLibraries'=>array(
-          'SortOrder'=>'Int'
-      )
-  );
+  // static $many_many_extraFields=array(
+  //     'ApplicationLibraries'=>array(
+  //         'SortOrder'=>'Int'
+  //     )
+  // );
 
 	function getCMSFields() {
     $fields = parent::getCMSFields();
@@ -39,7 +39,8 @@ class ApplicationPage extends Page {
     $fields->addFieldToTab('Root.Libraries', new LiteralField('', '<h2>Add Libraries</h2><br />Select or add an libraries you would like your app to use. JQuery is included by default.'));
 
     $config = GridFieldConfig_RelationEditor::create(10);
-    $config->addComponent(new GridFieldSortableRows("SortOrder"));
+    $config->addComponent(new GridFieldOrderableRows());
+
     $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
       'LoadOrder' => 'LoadOrder',
       'Name' => 'Name',
