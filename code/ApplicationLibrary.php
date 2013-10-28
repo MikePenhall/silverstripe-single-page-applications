@@ -6,7 +6,6 @@ class ApplicationLibrary extends DataObject{
 		'Name' => 'VarChar(50)',
 		'Version' => 'VarChar(50)',
 		'URL' => 'VarChar(500)',
-    'LoadOrder' => 'Int',
     'Sort' => 'Int'
 	);
 
