@@ -2,9 +2,22 @@
 
 class ApplicationPageDecorator extends DataExtension {
 
-	public static $many_many = array(
+	public static $has_one = array(
 		'Application' => 'Application'
 	);
+
+    public function AppHTML(){
+        if($this->Application && $this->Application->HTMLAttribute && $this->Application->HTMLValue){
+            return $HTMLAttribute="$HTMLValue";
+        }
+    }
+
+    public function AppBody(){
+        if($this->Application && $this->Application->BodyAttribute && $this->Application->BodyValue){
+            return $BodyAttribute="$BodyValue";
+        }
+    }
+
 
 }
 
