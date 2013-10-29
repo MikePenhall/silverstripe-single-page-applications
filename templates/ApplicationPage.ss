@@ -18,16 +18,7 @@
 	    padding-bottom: 20px;
 	  }
 	</style>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<% if ApplicationLibraries %>
-		<% loop ApplicationLibraries %>
-			<% if $type = "css" %>
-				<link type="text/css" rel="stylesheet" href="$link" />
-			<% else_if $type = "js" %>
-				<script type="text/javascript" src="$link"></script>
-			<% end_if %>
-		<% end_loop %>
-	<% end_if %>
+
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -41,7 +32,7 @@
 	<link rel="apple-touch-icon-precomposed" href="$Themedir/ico/apple-touch-icon-57-precomposed.png">
 </head>
 
-<body data-spy="scroll" $AppBody>
+<body data-spy="scroll" $BodyAttr>
 <!--[if lte IE 6]><div id="IE6"> <![endif]-->
 <!--[if lte IE 7]><div id="IE7"> <![endif]-->
 <!--[if lte IE 8]><div id="IE8"> <![endif]-->
@@ -54,15 +45,11 @@
 	<div class="container typography" id="layout">
 		$Layout
 	  <hr>
-	  $ApplicationHTML
-
 	</div> <!-- /container -->
 
 	<% include Footer %>
 
-	<script type="text/javascript">
-		$ApplicationJavascript
-	</script>
+
 
 	<% if SiteConfig.GACode %>
 		<script type="text/javascript">

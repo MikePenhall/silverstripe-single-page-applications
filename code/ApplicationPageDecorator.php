@@ -2,9 +2,9 @@
 
 class ApplicationPageDecorator extends DataExtension {
 
-	public static $has_one = array(
-		'Application' => 'Application'
-	);
+    public static $has_one = array(
+        'Application' => 'Application'
+    );
 
 
 

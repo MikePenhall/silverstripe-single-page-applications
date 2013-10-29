@@ -60,8 +60,7 @@ class Application extends DataObject {
     $dataColumns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
     $dataColumns->setDisplayFields(array(
       'Title' => 'Title',
-      'URLSegment'=> 'URL',
-      'LastEdited' => 'Changed'
+      'URLSegment'=> 'URL'
     ));
 
     $fields->addFieldToTab('Root.Pages', $gridField);
