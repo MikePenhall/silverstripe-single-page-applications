@@ -1,5 +1,5 @@
 {
-	"name": "silverstripe/singlepageapplications",
+	"name": "MikePenhall/silverstripe-singlepageapplications",
 	"description": "Silverstripe Module for creating single page applications",
 	"type": "silverstripe-module",
 	"keywords": ["silverstripe"],
@@ -14,5 +14,10 @@
 		"silverstripe/framework": "3.*",
 		"silverstripe/cms": "3.*",
 		"ajshort/silverstripe-gridfieldextensions": "dev-master"
-	}
+	},
+	"extra": {
+        "installer-paths": {
+            "/{$name}": ["singlepageapplications"]
+        }
+    }
 }
