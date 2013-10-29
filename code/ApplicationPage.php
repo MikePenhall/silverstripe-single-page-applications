@@ -15,12 +15,6 @@ class ApplicationPage extends Page {
     'ApplicationLibraries' => 'ApplicationLibrary'
   );
 
-  // static $many_many_extraFields=array(
-  //     'ApplicationLibraries'=>array(
-  //         'SortOrder'=>'Int'
-  //     )
-  // );
-
 	function getCMSFields() {
     $fields = parent::getCMSFields();
     $fields->removeByName('Content');
@@ -42,7 +36,7 @@ class ApplicationPage extends Page {
     $config->addComponent(new GridFieldOrderableRows());
 
     $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-      'LoadOrder' => 'LoadOrder',
+      'Sort' => 'Sort Order',
       'Name' => 'Name',
       'Version' => 'Version'
     ));
@@ -58,10 +52,6 @@ class ApplicationPage extends Page {
     $fields->addFieldToTab('Root.Libraries', $gridField);
 
  		return $fields;
-  }
-
-  public function ApplicationLibraries() {
-      return $this->getManyManyComponents('ApplicationLibraries')->sort('SortOrder');
   }
 
 }

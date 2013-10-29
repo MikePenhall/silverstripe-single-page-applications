@@ -17,10 +17,10 @@ class ApplicationLibrary extends DataObject{
 
 	function getCMSFields() {
     $fields = parent::getCMSFields();
+    $fields->removeByName('Sort');
     $fields->push(new TextField('Name', 'The library name eg. Angular'));
     $fields->push(new TextField('Version', 'The version number of the library eg. 1.2'));
     $fields->push(new TextField('URL', 'The url to load the library itself'));
-    $fields->push(new NumericField('LoadOrder', 'If your libraries are order dependent, specify the order to load it here. The lower the number, the earlier it is called.'));
     return $fields;
   }
 
