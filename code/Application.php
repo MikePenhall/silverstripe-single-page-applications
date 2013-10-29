@@ -64,6 +64,7 @@ class Application extends DataObject {
     ));
 
     $fields->addFieldToTab('Root.Pages', $gridField);
+    $fields->removeByName('ApplicationLibraries');
 
     return $fields;
   }
