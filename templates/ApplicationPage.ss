@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="$ContentLocale" $AppHTML>
+<html lang="$ContentLocale" $HTMLAttr>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,7 +19,15 @@
 	  }
 	</style>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
+	<% if ApplicationLibraries %>
+		<% loop ApplicationLibraries %>
+			<% if $type = "css" %>
+				<link type="text/css" rel="stylesheet" href="$link" />
+			<% else_if $type = "js" %>
+				<script type="text/javascript" src="$link"></script>
+			<% end_if %>
+		<% end_loop %>
+	<% end_if %>
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,12 +52,17 @@
 	<% include Header %>
 
 	<div class="container typography" id="layout">
-
 		$Layout
 	  <hr>
+	  $ApplicationHTML
+
 	</div> <!-- /container -->
 
 	<% include Footer %>
+
+	<script type="text/javascript">
+		$ApplicationJavascript
+	</script>
 
 	<% if SiteConfig.GACode %>
 		<script type="text/javascript">

@@ -3,6 +3,7 @@
 class Application extends DataObject {
 
 	private static $db = array(
+    'Name' => 'VarChar(250)',
     'HTMLAttribute' => 'VarChar(100)',
     'HTMLValue' => 'VarChar(100)',
 		'BodyAttribute' => 'VarChar(100)',
@@ -12,7 +13,7 @@ class Application extends DataObject {
 	);
 
   static $belongs_to = array(
-    'Pages' => 'Page'
+    'Page' => 'Page'
   );
 
 	static $many_many = array(
@@ -21,7 +22,7 @@ class Application extends DataObject {
 
 	function getCMSFields() {
     $fields = parent::getCMSFields();
-		$fields->removeByName('Content');
+		$fields->push(new TextField('Name', "<p>Application Name</p>"));
     $fields->push(new LiteralField('HTMLHeading', "<p>Add an attribute to the page's html node if required.</p>"));
     $fields->push(new TextField('HTMLAttribute', "<p>Attribute <strong>name</strong> to add to page's html tag</p>"));
     $fields->push(new TextField('HTMLValue', "<p>Attribute <strong>value</strong> to add to page's html tag</p>"));
@@ -47,12 +48,23 @@ class Application extends DataObject {
 
     $gridField = new GridField(
       "ApplicationLibraries", // Field name
-      "ApplicationLibraries", // Field title
-      $obj->ApplicationLibraries(), // List of all related libraries
+      "Libraries", // Field title
+      $this->ApplicationLibraries(), // List of all related libraries
       $config
     );
 
     $fields->addFieldToTab('Root.Libraries', $gridField);
+
+    $pageID = $this->Page() ? $this->Page()->ID : 0;
+    $gridField = new GridField('pages', 'Pages', DataObject::get('SiteTree')->where("ID = {$pageID}"), GridFieldConfig_RelationEditor::create());
+    $dataColumns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
+    $dataColumns->setDisplayFields(array(
+      'Title' => 'Title',
+      'URLSegment'=> 'URL',
+      'LastEdited' => 'Changed'
+    ));
+
+    $fields->addFieldToTab('Root.Pages', $gridField);
 
     return $fields;
   }
