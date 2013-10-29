@@ -31,6 +31,7 @@ class ApplicationPage_Controller extends Page_Controller {
 		parent::init();
 
     Requirements::javascript("https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
+    // Requirements::javascript("singlepageapplications/javascript/bind.js");
 
     foreach ($this->Owner->ApplicationLibraries()->sort('LoadOrder') as $library) {
       $type = preg_split("/./",$library);

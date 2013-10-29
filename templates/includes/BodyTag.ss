@@ -1,0 +1,1 @@
+<% if $BodyAttribute && if $BodyValue %>$BodyAttribute="$BodyValue"<% end_if %>

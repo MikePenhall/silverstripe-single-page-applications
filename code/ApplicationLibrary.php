@@ -12,6 +12,7 @@ class ApplicationLibrary extends DataObject{
   public static $default_sort='SortOrder';
 
 	static $belongs_many_many = array(
+    'Pages' => 'Page',
     'ApplicationPages' => 'ApplicationPage'
   );
 

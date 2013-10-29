@@ -1,0 +1,1 @@
+<% if $HTMLAttribute && if $HTMLValue %>$HTMLAttribute="$HTMLValue"<% end_if %>

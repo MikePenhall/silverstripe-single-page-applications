@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="$ContentLocale" <% if $HTMLAttribute && if $HTMLValue %>$HTMLAttribute="$HTMLValue"<% end_if %>>
+
+<html lang="$ContentLocale">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,6 +18,7 @@
 	    padding-bottom: 20px;
 	  }
 	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -31,7 +33,7 @@
 	<link rel="apple-touch-icon-precomposed" href="$Themedir/ico/apple-touch-icon-57-precomposed.png">
 </head>
 
-<body data-spy="scroll" <% if $BodyAttribute && if $BodyValue %>$BodyAttribute="$BodyValue"<% end_if %>>
+<body data-spy="scroll">
 <!--[if lte IE 6]><div id="IE6"> <![endif]-->
 <!--[if lte IE 7]><div id="IE7"> <![endif]-->
 <!--[if lte IE 8]><div id="IE8"> <![endif]-->
@@ -50,6 +52,7 @@
 	<% include Footer %>
 
 	<% if SiteConfig.GACode %>
+	<% include Bind %>
 		<script type="text/javascript">
 
 			var _gaq = _gaq || [];
