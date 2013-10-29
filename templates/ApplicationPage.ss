@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="$ContentLocale">
+<html lang="$ContentLocale" <% include HTMLTag %>>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -33,7 +33,7 @@
 	<link rel="apple-touch-icon-precomposed" href="$Themedir/ico/apple-touch-icon-57-precomposed.png">
 </head>
 
-<body data-spy="scroll">
+<body data-spy="scroll" <% include BodyTag %>>
 <!--[if lte IE 6]><div id="IE6"> <![endif]-->
 <!--[if lte IE 7]><div id="IE7"> <![endif]-->
 <!--[if lte IE 8]><div id="IE8"> <![endif]-->
@@ -52,7 +52,6 @@
 	<% include Footer %>
 
 	<% if SiteConfig.GACode %>
-	<% include Bind %>
 		<script type="text/javascript">
 
 			var _gaq = _gaq || [];
