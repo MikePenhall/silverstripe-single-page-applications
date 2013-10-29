@@ -12,8 +12,8 @@ class Application extends DataObject {
 		'ApplicationJavascript' => 'HTMLText'
 	);
 
-  static $belongs_to = array(
-    'Page' => 'Page'
+  static $has_one = array(
+    'ApplicationPage' => 'ApplicationPage'
   );
 
 	static $many_many = array(
@@ -23,6 +23,7 @@ class Application extends DataObject {
 	function getCMSFields() {
     $fields = parent::getCMSFields();
 		$fields->push(new TextField('Name', "<p>Application Name</p>"));
+    $fields->push(new DropdownField('ApplicationPageID', "Page", ApplicationPage::get()->map('ID', 'Title')));
     $fields->push(new LiteralField('HTMLHeading', "<p>Add an attribute to the page's html node if required.</p>"));
     $fields->push(new TextField('HTMLAttribute', "<p>Attribute <strong>name</strong> to add to page's html tag</p>"));
     $fields->push(new TextField('HTMLValue', "<p>Attribute <strong>value</strong> to add to page's html tag</p>"));
@@ -55,15 +56,6 @@ class Application extends DataObject {
 
     $fields->addFieldToTab('Root.Libraries', $gridField);
 
-    $pageID = $this->Page() ? $this->Page()->ID : 0;
-    $gridField = new GridField('pages', 'Pages', DataObject::get('SiteTree')->where("ID = {$pageID}"), GridFieldConfig_RelationEditor::create());
-    $dataColumns = $gridField->getConfig()->getComponentByType('GridFieldDataColumns');
-    $dataColumns->setDisplayFields(array(
-      'Title' => 'Title',
-      'URLSegment'=> 'URL'
-    ));
-
-    $fields->addFieldToTab('Root.Pages', $gridField);
     $fields->removeByName('ApplicationLibraries');
 
     return $fields;

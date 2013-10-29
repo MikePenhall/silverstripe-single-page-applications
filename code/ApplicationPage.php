@@ -2,6 +2,10 @@
 
 class ApplicationPage extends Page {
 
+    public static $belongs_to = array(
+      'Application' => 'Application'
+    );
+
 		public function HTMLAttr(){
         if($this->Application() && $this->Application()->HTMLAttribute && $this->Application()->HTMLValue){
             return stripslashes("{$this->Application()->HTMLAttribute}\='{$this->Application()->HTMLValue}'");
