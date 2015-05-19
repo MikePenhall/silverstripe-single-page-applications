@@ -13,7 +13,7 @@
 	{
 		"silverstripe/framework": "3.*",
 		"silverstripe/cms": "3.*",
-		"ajshort/silverstripe-gridfieldextensions": "dev-master"
+		"silverstripe-australia/silverstripe-gridfieldextensions": "dev-master"
 	},
 	"extra": {
         "installer-paths": {
